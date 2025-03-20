@@ -1,12 +1,12 @@
 import axios from "axios";
 import { Calendar, Clock, Play, Star } from "lucide-react";
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import MovieCard from "../MovieCard";
 
-const API_KEY = "a66a914d76a72e2a74ec10992399f3b7";
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const BASE_URL = "https://api.themoviedb.org/3";
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/original";
 
@@ -17,7 +17,7 @@ const MoviesPage = () => {
   const [director, setDirector] = useState([]);
   const [similarMovies, setSimilarMovies] = useState([]);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -62,7 +62,9 @@ const MoviesPage = () => {
     fetchMovie();
     fetchCredits();
     fetchSimilarMovies();
-  }, [id]);
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [id, location.pathname]);
 
   const handleExternalLink = () => {
     if (movie?.homepage) {
@@ -82,7 +84,7 @@ const MoviesPage = () => {
             src={
               movie?.backdrop_path
                 ? `${IMAGE_BASE_URL}/${movie?.backdrop_path}`
-                : "none"
+                : "/assets/bg-fallback-image.png"
             }
             alt={movie?.title}
             className="w-full h-full object-cover"

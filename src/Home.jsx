@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-// import { Button } from "./components/ui/button";
+import { Button } from "./components/ui/button";
 import { ChevronRight, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import MovieCard from "./components/MovieCard";
 // import { CategorySlider } from "./components/CategorySlider";
 
-const API_KEY = "a66a914d76a72e2a74ec10992399f3b7";
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const BASE_URL = "https://api.themoviedb.org/3";
+const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/original";
 
 const Home = () => {
   const [trending, setTrending] = useState([]);
@@ -38,14 +39,14 @@ const Home = () => {
             Math.floor(Math.random() * popularRes.data.results.length)
           ];
         setHeroMovie(randomMovie);
-        setLoading(false)
+        setLoading(false);
       } catch (error) {}
     };
 
     fetchMovies();
   }, []);
 
-  if(loading) return <p>Loading...</p>
+  if (loading) return <p>Loading...</p>;
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -55,7 +56,7 @@ const Home = () => {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: heroMovie
-              ? `url(https://image.tmdb.org/t/p/original${heroMovie.backdrop_path})`
+              ? `url(${IMAGE_BASE_URL}${heroMovie.backdrop_path})`
               : "none",
             backgroundPosition: "center 20%",
           }}
@@ -71,27 +72,24 @@ const Home = () => {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
-            {/* <Button className="flex items-center gap-2 bg-primary hover:bg-primary/90">
+            <Button className="flex items-center gap-2 bg-primary hover:bg-primary/90">
               <Play className="h-4 w-4" /> Watch Now
             </Button>
-            <Button
-              variant="outline"
-              className="border-gray-600 text-white hover:bg-gray-800"
-            >
+            <Button variant="outline" className="text-black">
               Add to Watchlist
-            </Button> */}
+            </Button>
           </div>
 
-          <div className="mt-4 flex items-center gap-2 text-sm text-gray-400">
-            {/* <span className="rounded bg-yellow-600 px-1.5 py-0.5 text-xs font-medium text-white">
+          {/* <div className="mt-4 flex items-center gap-2 text-sm text-gray-400">
+            <span className="rounded bg-yellow-600 px-1.5 py-0.5 text-xs font-medium text-white">
               IMDb
-            </span> */}
-            {/* <span>8.5/10</span> */}
-            {/* <span className="h-1 w-1 rounded-full bg-gray-500"></span> */}
+            </span>
+            <span>8.5/10</span>
+            <span className="h-1 w-1 rounded-full bg-gray-500"></span>
             <span>{heroMovie?.release_date}</span>
-            {/* <span className="h-1 w-1 rounded-full bg-gray-500"></span> */}
-            {/* <span>3h 10m</span> */}
-          </div>
+            <span className="h-1 w-1 rounded-full bg-gray-500"></span>
+            <span>3h 10m</span>
+          </div> */}
         </div>
       </section>
 

@@ -1,8 +1,8 @@
 import { Film, Menu, Search, X } from "lucide-react";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-// import { Input } from "./ui/input";
-// import { Button } from "./ui/button";
+import { Input } from "./ui/input";
+import { Button } from "./ui/button";
 // import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
 const Navbar = () => {
@@ -17,16 +17,16 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex md:items-center md:gap-6">
-          <Link href="/" className="text-sm font-medium text-primary">
+          <Link to="/" className="text-sm font-medium text-primary">
             Home
           </Link>
-          <Link href="/movies" className="text-sm font-medium text-primary">
+          <Link to="/movies" className="text-sm font-medium text-primary">
             Movies
           </Link>
-          <Link href="/series" className="text-sm font-medium text-primary">
+          <Link to="/series" className="text-sm font-medium text-primary">
             Series
           </Link>
-          <Link href="/watchlist" className="text-sm font-medium text-primary">
+          <Link to="/watchlist" className="text-sm font-medium text-primary">
             My Watchlist
           </Link>
         </nav>
@@ -62,7 +62,7 @@ const Navbar = () => {
             </Button>
           )}
 
-          <Sheet>
+          {/* <Sheet>
             <SheetTrigger>
               <Button
                 variant="ghost"
@@ -102,17 +102,17 @@ const Navbar = () => {
                 >
                   My Watchlist
                 </Link>
-                {/* <div className="mt-4 space-y-2">
+                <div className="mt-4 space-y-2">
                   <Button className="w-full" variant="default">
                     Sign In
                   </Button>
                   <Button className="w-full" variant="outline">
                     Sign Up
                   </Button>
-                </div> */}
+                </div>
               </nav>
             </SheetContent>
-          </Sheet>
+          </Sheet> */}
         </div>
       </div>
     </header>
