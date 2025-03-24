@@ -5,6 +5,8 @@ import Home from "./Home";
 import MoviesPage from "./components/movies/MoviesPage";
 import Footer from "./components/Footer";
 import MoviesList from "./components/movies/MoviesList";
+import SeriesList from "./components/series/SeriesList";
+import SeriesPage from "./components/series/SeriesPage";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/movies" element={<MoviesList />} />
           <Route path="/movie/:id" element={<MoviesPage />} />
+          <Route path="/series" element={<SeriesList />} />
+          <Route path="/series/:id" element={<SeriesPage />} />
         </Routes>
         <Footer />
       </div>
