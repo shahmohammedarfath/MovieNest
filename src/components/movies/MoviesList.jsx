@@ -9,6 +9,7 @@ const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const BASE_URL = "https://api.themoviedb.org/3";
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/original";
 
+
 const MoviesList = ({ type }) => {
   const [totalPages, setTotalPages] = useState(1);
   const [allMovies, setAllMovies] = useState([]);
@@ -25,7 +26,6 @@ const MoviesList = ({ type }) => {
           page: currentPage,
           ...filters
         })
-
         const response = await axios.get(
           `${BASE_URL}/discover/${type}?${queryParams}`
         );
@@ -50,7 +50,7 @@ const MoviesList = ({ type }) => {
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {allMovies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} type={type}/>
+          <MovieCard key={movie.id} movie={movie} type={type} />
         ))}
       </div>
 
