@@ -4,15 +4,9 @@ import { Link } from "react-router-dom";
 
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/original";
 
-<<<<<<< HEAD
 const MovieCard = ({ movie, type }) => {
   return (
     <Link to={`/${type}/${movie.id}`} className="group">
-=======
-const MovieCard = ({ movie }) => {
-  return (
-    <Link to={`/movie/${movie.id}`} className="group">
->>>>>>> f36e1ccb166a48a7b4520fcdb5507b99317a3f36
       <div className="relative overflow-x-auto rounded-lg transition-all duration-300 group-hover:ring-2 group-hover:ring-primary hover:bottom-1.5">
         <div className="aspect-[2/3] w-full">
           <img
